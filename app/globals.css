@@ -166,18 +166,36 @@ header .set p {
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  
   height: 35vh;
   width: calc(90vw /3);
-
+  
   margin: 20px;
-
+  
   background: var(--glass-gradient);
   border-radius: var(--border-radius);
   padding: 0px 20px;
-
+  
   border: solid;
   border-color: var(--glass-border);
   border-width: 1px;
   backdrop-filter: blur(16px);
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  all: unset;
+  height: fit-content;
+  width: fit-content;
+
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: #7f4cff;
+  color: #ffffff;
+
+  margin-bottom: 10px;
 }

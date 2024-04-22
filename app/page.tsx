@@ -1,8 +1,25 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Card from "./elements.jsx";
+"use client"
+
+import Card from "./elements.jsx";  // This is the "Card" tag that I created to simplify the addition of glass texture information cards.
+import { useEffect } from "react";  // useEffect runs whenever the webpage loads, and when this runs can differ based on a multitude of factors but for this project, it runs on load.
+
+let connection = new WebSocket("ws://localhost:8765"); // WebSocket connection to my Python Server
 
 export default function Home() {
+  useEffect(() => {
+    connection.addEventListener("message", (event) => {
+      document.getElementById("dataPoint1AText")!.textContent = `${event.data}`  // Altering the DOM textContent to write the 1 or 0.
+    });
+  }, []);
+
+  // These two functions simply send the LED toggle message through the WebSocket connection.
+  function sendLedOn() {
+    connection.send("LEDOn;")
+  }
+  function sendLedOff() {
+    connection.send("LEDOff;")
+  }
+
   return (
     <main>
       <div className="background">
@@ -10,8 +27,7 @@ export default function Home() {
       </div>
       <header>
         <div className="logoSet">
-          <h1>HOTDOG Network</h1>
-          <p>The IOT network that just works.</p>
+          <h1>Cereal Net</h1>
         </div>
         <div className="set">
           <span className="material-symbols-outlined">hub</span>
@@ -26,28 +42,25 @@ export default function Home() {
       <div className="cardSet">
         <Card content={
           <div>
-            <h1></h1>
+            <div className="rowIconText">
+              <span className="material-symbols-outlined">monitoring</span>
+              <h1>Data Point 1A</h1>
+            </div>
+            <p>Custom data connection.</p>
+            <h1 id="dataPoint1AText"></h1>  {/* this is where the 1 or 0 is displayed */}
           </div>
         } type={"smallRight"}></Card>
         <Card content={
           <div>
             <div className="rowIconText">
-              <span className="material-symbols-outlined">hub</span>
-              <h1>Connected!</h1>
+              <span className="material-symbols-outlined">monitoring</span>
+              <h1>Data Communications 1A</h1>
             </div>
-            <p>You're connected to your hub using a local server connected to a total of 1 device.</p>
-            <p>These devices are shown on this console, or should appear on this console soon.</p>
-            <div className="rowIconText">
-              <span className="material-symbols-outlined">warning</span>
-              <span className="material-symbols-outlined">public</span>
-              <h1>Publicly Viewable</h1>
+            <p>Custom data communications.</p>
+            <div className="buttonDiv">
+              <button onClick={sendLedOn}>Turn Lights ON</button> {/* these are the two On/Off Buttons. */}
+              <button onClick={sendLedOff}>Turn Lights OFF</button>
             </div>
-            <p>Your console is publicly viewable and can be controlled by anyone. If you want to restrict access, go to Settings {">"} Security {">"} Restrict Access</p>
-          </div>
-        } type={"smallRight"}></Card>
-        <Card content={
-          <div>
-            <h1></h1>
           </div>
         } type={"smallRight"}></Card>
       </div>
