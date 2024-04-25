@@ -199,3 +199,17 @@ button {
 
   margin-bottom: 10px;
 }
+
+.dot {
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+}
+
+.red {
+  background: rgb(255, 76, 52);
+}
+.green {
+  background: rgb(145, 255, 0);
+}
+
