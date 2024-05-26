@@ -164,11 +164,30 @@ header .set p {
 
 .card {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   
   height: 35vh;
-  width: calc(90vw /3);
+  width: 90vw;
+  
+  margin: 20px;
+  
+  background: var(--glass-gradient);
+  border-radius: var(--border-radius);
+  padding: 0px 20px;
+  
+  border: solid;
+  border-color: var(--glass-border);
+  border-width: 1px;
+  backdrop-filter: blur(16px);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  height: 35vh;
+  width: 90vw;
   
   margin: 20px;
   
@@ -194,8 +213,14 @@ button {
 
   padding: 10px 20px;
   border-radius: 15px;
-  background-color: #7f4cff;
-  color: #ffffff;
+  background: var(--glass-gradient);
+  border-radius: var(--border-radius);
+  padding: 8px 16px;
+
+  border: solid;
+  border-color: var(--glass-border);
+  border-width: 1px;
+  backdrop-filter: blur(16px);
 
   margin-bottom: 10px;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
-function Card({content, type}) {
-    return(<div className="card" data-display={`${type}`}>
+function Card({content}) {
+    return(<div className="card">
         {content}
     </div>)
 }
