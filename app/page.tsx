@@ -2,22 +2,6 @@
 
 import Card from "./elements.jsx";
 import { useEffect, useState } from "react";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAeCiQ2oE1-h3A8cOjLzjmY5HbMP4_ZzGE",
-  authDomain: "cereal-net.firebaseapp.com",
-  projectId: "cereal-net",
-  storageBucket: "cereal-net.appspot.com",
-  messagingSenderId: "142407914741",
-  appId: "1:142407914741:web:5c823495b4dbc96bc821bc",
-  measurementId: "G-097QPKBE4S"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 let connection: WebSocket;
 
